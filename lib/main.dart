@@ -1,5 +1,4 @@
-
-import 'package:flutter_assigment/views/pages.dart';
+import 'package:coba_baru/views/pages.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,7 +11,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Week3Page()
+      initialRoute: '/',
+      routes: {
+        '/': (context) => Week3Page(),
+        Booking.routeName: (context) => Booking(),
+      },
     );
   }
 }

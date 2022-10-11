@@ -1,6 +1,8 @@
 part of 'pages.dart';
 
 class Week3Page extends StatefulWidget {
+  const Week3Page({ Key? key }) : super(key: key);
+   static const String routeName = '/';
 
   @override
   _Week3PageState createState() => _Week3PageState();
@@ -143,6 +145,7 @@ class _Week3PageState extends State<Week3Page> {
                         )),                           
                     )),
                     ),
+                    
                   ],
                   ),
                 ),
@@ -178,6 +181,13 @@ class _Week3PageState extends State<Week3Page> {
                                 style: TextStyle(fontSize: 16)
                             ),
                         ),   
+                        SizedBox(height:32),
+              ElevatedButton(
+                onPressed: (){
+                 Navigator.pushNamed(context, Booking.routeName);
+                },
+                child: Text("Booking Now")
+              )
                   ]
                   ),
                 ),
