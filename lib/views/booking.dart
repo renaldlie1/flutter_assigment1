@@ -87,27 +87,103 @@ class _BookingState extends State<Booking> {
                 ElevatedButton(
                     onPressed: () {
                       if (_loginKey.currentState!.validate()) {
-                        Fluttertoast.showToast(
-                            msg: 'Booking Confirmation:' +
-                                "Full Name: " +
-                                ctrlFullname.text.toString() +
-                                ', Email: ' +
-                                ctrlEmail.text.toString() +
-                                ', Phone Number: ' +
-                                ctrlPhonenumber.text.toString() +
-                                ', City; ' +
-                                ctrlCity.text.toString(),
-                            toastLength: Toast.LENGTH_SHORT,
-                            fontSize: 14,
-                            backgroundColor: Colors.greenAccent,
-                            textColor: Colors.white);
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return Dialog(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10)),
+                              elevation: 16,
+                              child: Container(
+                                child: ListView(
+                                  shrinkWrap: true,
+                                  children: <Widget>[
+                                    SizedBox(height: 20),
+                                    Center(
+                                        child: Text('Booking Confirmation',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 18))),
+                                    SizedBox(height: 20),
+                                    Padding(
+                                      padding: EdgeInsets.all(
+                                          15), //apply padding to all four sides
+                                      child: Text(
+                                        "Full Name: " +
+                                            ctrlFullname.text.toString() +
+                                            ', Email: ' +
+                                            ctrlEmail.text.toString() +
+                                            ', Phone Number: ' +
+                                            ctrlPhonenumber.text.toString() +
+                                            ', City; ' +
+                                            ctrlCity.text.toString(),
+                                      ),
+                                    ),
+                                    SizedBox(height: 5),
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.pop(context, true);
+                                      },
+                                      child: Text("OK"),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+                        );
+                        // Fluttertoast.showToast(
+                        //     msg: 'Booking Confirmation:' +
+                        //         "Full Name: " +
+
+                        //     toastLength: Toast.LENGTH_SHORT,
+                        //     fontSize: 14,
+                        //     backgroundColor: Colors.greenAccent,
+                        //     textColor: Colors.white);
                       } else {
-                        Fluttertoast.showToast(
-                            msg: "Booking Failed " + " Please fill all fields!",
-                            toastLength: Toast.LENGTH_SHORT,
-                            fontSize: 14,
-                            backgroundColor: Colors.redAccent,
-                            textColor: Colors.white);
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return Dialog(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10)),
+                              elevation: 16,
+                              child: Container(
+                                child: ListView(
+                                  shrinkWrap: true,
+                                  children: <Widget>[
+                                    SizedBox(height: 20),
+                                    Center(
+                                        child: Text('Booking Failed',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 18))),
+                                    SizedBox(height: 20),
+                                    Padding(
+                                      padding: EdgeInsets.all(
+                                          15), //apply padding to all four sides
+                                      child: Text(
+                                          "Please fill in all the data requirement :)"),
+                                    ),
+                                    SizedBox(height: 5),
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.pop(context, true);
+                                      },
+                                      child: Text("OK"),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+                        );
+                        // Fluttertoast.showToast(
+                        //     msg: "Booking Failed " + " Please fill all fields!",
+                        //     toastLength: Toast.LENGTH_SHORT,
+                        //     fontSize: 14,
+                        //     backgroundColor: Colors.redAccent,
+                        //     textColor: Colors.white);
                       }
                     },
                     child: Text("Book Now"))
